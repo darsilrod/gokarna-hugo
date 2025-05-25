@@ -16,6 +16,10 @@ Gokarna is an opinionated theme with a focus on minimalism and simplicity.
 
 ## Support the developer
 
+<a href="https://github.com/sponsors/gokarna-theme">
+  <img src="https://img.shields.io/badge/Sponsor-❤-red?style=for-the-badge" width="170" height="37" alt="Sponsor us">
+</a>
+
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/avijitgupta)
 
 ## Features
@@ -28,7 +32,7 @@ Gokarna is fast, responsive, and [SEO-friendly](#performance).
 - [Syntax highlighting](https://gokarna-hugo.netlify.app/posts/theme-documentation-advanced/#syntax-highlighting)
 - [Custom HTML, JavaScript, and CSS](https://gokarna-hugo.netlify.app/posts/theme-documentation-advanced/#custom-head-and-footer-html)
 - [Configurable Table of Contents](https://gokarna-hugo.netlify.app/posts/theme-documentation-advanced/#table-of-contents)
-- Español (Spanish/Catalan), Deutsch (German), Français (French), Polski (Polish), Português Brasileiro (Brazilian Portugese), and Русский (Russian) [translations](https://github.com/gokarna-theme/gokarna-hugo/tree/main/i18n)
+- Español (Spanish/Catalan), Deutsch (German), Français (French), Polski (Polish), Português Brasileiro (Brazilian Portuguese), and Русский (Russian) [translations](https://github.com/gokarna-theme/gokarna-hugo/tree/main/i18n)
 - Google Lato fonts
 - Auto-generated RSS feed
 
