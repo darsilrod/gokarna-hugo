@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', ready, false);
 
-const THEME_PREF_STORAGE_KEY = "theme-preference";
+const THEME_PREF_STORAGE_KEY = 'theme-preference';
+const HIDDEN_ELEMENT_CLASS = 'hidden-element'
 const THEME_TO_ICON_CLASS = {
     'dark': 'feather-moon',
     'light': 'feather-sun'
@@ -9,7 +10,6 @@ const THEME_TO_ICON_TEXT_CLASS = {
     'dark': 'Dark mode',
     'light': 'Light mode'
 };
-let toggleIcon = '';
 let darkThemeCss = '';
 
 const HEADING_TO_TOC_CLASS = {
@@ -20,7 +20,6 @@ const HEADING_TO_TOC_CLASS = {
 }
 
 function ready() {
-    feather.replace({ 'stroke-width': 1, width: 20, height: 20 });
     setThemeByUserPref();
 
     if (document.querySelector('main#content > .container') !== null &&
@@ -29,7 +28,7 @@ function ready() {
             fixTocItemsIndent();
             createScrollSpy();
         } else {
-            document.querySelector('main#content > .container.post').style.display = "block";
+            document.querySelector('main#content > .container.post').style.display = 'block';
         }
     }
 
@@ -38,35 +37,15 @@ function ready() {
     // Do the injection
     SVGInjector(svgsToInject);
 
-    const observer = new MutationObserver(() => {
-        normalizeSvgPaths();
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    function normalizeSvgPaths() {
-        document.querySelectorAll('.nav-link a .svg-inject').forEach(path => {
-            const bbox = path.getBBox();
-            const scaleX = 20 / bbox.width;
-            const scaleY = 20 / bbox.height;
-            const scale = Math.min(scaleX, scaleY);
-
-            path.setAttribute('transform', `scale(${scale}) translate(${-bbox.x}, ${-bbox.y})`);
-            path.setAttribute('stroke', 'currentColor');
-            path.setAttribute('stroke-width', '1');
-            path.setAttribute('fill', 'transparent');
-        });
-    }
-
     document.getElementById('hamburger-menu-toggle').addEventListener('click', () => {
         const hamburgerMenu = document.getElementsByClassName('nav-hamburger-list')[0]
-        const hamburgerMenuToggleTarget = document.getElementById("hamburger-menu-toggle-target")
+        const hamburgerMenuToggleTarget = document.getElementById('hamburger-menu-toggle-target')
         if (hamburgerMenu.classList.contains('visibility-hidden')) {
             hamburgerMenu.classList.remove('visibility-hidden');
-            hamburgerMenuToggleTarget.setAttribute("aria-checked", "true");
+            hamburgerMenuToggleTarget.setAttribute('aria-checked', 'true');
         } else {
             hamburgerMenu.classList.add('visibility-hidden');
-            hamburgerMenuToggleTarget.setAttribute("aria-checked", "false");
+            hamburgerMenuToggleTarget.setAttribute('aria-checked', 'false');
         }
     })
 }
@@ -82,7 +61,7 @@ window.addEventListener('scroll', () => {
 
 function fixTocItemsIndent() {
     document.querySelectorAll('#TableOfContents a').forEach($tocItem => {
-        const itemId = $tocItem.getAttribute("href").substring(1)
+        const itemId = $tocItem.getAttribute('href').substring(1)
         $tocItem.classList.add(HEADING_TO_TOC_CLASS[document.getElementById(itemId).tagName]);
     });
 }
@@ -115,7 +94,7 @@ function toggleHeaderShadow(scrollY) {
 }
 
 function setThemeByUserPref() {
-    darkThemeCss = document.getElementById("dark-theme");
+    darkThemeCss = document.getElementById('dark-theme');
     const savedTheme = localStorage.getItem(THEME_PREF_STORAGE_KEY) ||
         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     const darkThemeToggles = document.querySelectorAll('.dark-theme-toggle');
@@ -124,23 +103,30 @@ function setThemeByUserPref() {
 }
 
 function toggleTheme(event) {
-    toggleIcon = event.currentTarget.querySelector("a svg.feather");
-    if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.dark) {
-        setThemeAndStore('light', [event.currentTarget]);
-    } else if (toggleIcon.classList[1] === THEME_TO_ICON_CLASS.light) {
-        setThemeAndStore('dark', [event.currentTarget]);
-    }
+    const isDark = event.currentTarget.querySelector('a svg.feather-sun').classList.contains(HIDDEN_ELEMENT_CLASS);
+    setThemeAndStore(isDark ? 'light' : 'dark', event.currentTarget);
 }
 
 function setTheme(themeToSet, targets) {
     darkThemeCss.disabled = themeToSet === 'light';
     targets.forEach((target) => {
-        target.querySelector('a').innerHTML = feather.icons[THEME_TO_ICON_CLASS[themeToSet].split('-')[1]].toSvg();
-        target.querySelector(".dark-theme-toggle-screen-reader-target").textContent = [THEME_TO_ICON_TEXT_CLASS[themeToSet]];
+        displayOrHide(themeToSet, target.querySelectorAll('a .theme-toggle-icon'));
+        target.querySelector('.dark-theme-toggle-screen-reader-target').textContent = [THEME_TO_ICON_TEXT_CLASS[themeToSet]];
+
     });
 }
 
-function setThemeAndStore(themeToSet, targets) {
-    setTheme(themeToSet, targets);
+function displayOrHide(themeToSet, targets) {
+    targets.forEach((target) => {
+        if (target.classList.contains(THEME_TO_ICON_CLASS[themeToSet])) {
+            target.classList.remove(HIDDEN_ELEMENT_CLASS);
+        } else {
+            target.classList.add(HIDDEN_ELEMENT_CLASS);
+        }
+    });
+}
+
+function setThemeAndStore(themeToSet, target) {
+    setTheme(themeToSet, [target]);
     localStorage.setItem(THEME_PREF_STORAGE_KEY, themeToSet);
 }

@@ -49,6 +49,11 @@ a:hover {
   fill: var(--accent-color);
 }
 
+.anilist-bg:hover {
+  color: var(--accent-color);
+  fill: var(--accent-color);
+}
+
 main#content {
   margin: 90px auto 0;
   width: var(--content-width);
@@ -170,6 +175,9 @@ img {
   float: right;
   line-height: 50px;
   margin-right: 10px;
+}
+.hidden-element {
+  display: none;
 }
 .nav-links .nav-link {
   display: inline-block;

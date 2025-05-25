@@ -3,4 +3,4 @@ geckodriver.log
 .idea/
 .hugo_build.lock
 # Ignore build dir (hugo server)
-exampleSite/public/
+/public/
