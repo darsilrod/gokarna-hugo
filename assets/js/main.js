@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', ready, false);
 
+// TODO: make it so that moon cannot be seen for a brief moment?
+
 const THEME_PREF_STORAGE_KEY = 'theme-preference';
 const HIDDEN_ELEMENT_CLASS = 'hidden-element'
 const THEME_TO_ICON_CLASS = {
@@ -31,11 +33,6 @@ function ready() {
             document.querySelector('main#content > .container.post').style.display = 'block';
         }
     }
-
-    // Elements to inject
-    const svgsToInject = document.querySelectorAll('img.svg-inject');
-    // Do the injection
-    SVGInjector(svgsToInject);
 
     document.getElementById('hamburger-menu-toggle').addEventListener('click', () => {
         const hamburgerMenu = document.getElementsByClassName('nav-hamburger-list')[0]

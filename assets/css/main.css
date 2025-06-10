@@ -49,6 +49,10 @@ a:hover {
   fill: var(--accent-color);
 }
 
+.anilist-bg {
+  fill: #1e2630;
+}
+
 .anilist-bg:hover {
   color: var(--accent-color);
   fill: var(--accent-color);
@@ -664,8 +668,8 @@ table td {
 
 /* back to top button  */
 .arrow-logo {
-  background-color: transparent;
-  border-radius: 50%;
+  /* background-color: transparent; */
+  /* border-radius: 50%; */
   bottom: 20px;
   cursor: pointer;
   display: none;
@@ -675,13 +679,15 @@ table td {
   position: fixed;
   right: 20px;
   z-index: 5;
-  background-color: var(--light-tertiary-color);
-  width: 25px;
-  height: 25px;
+  /* background-color: var(--light-tertiary-color); */
+  fill: var(--light-tertiary-color);
+  width: 40px;
+  height: 40px;
 }
 
-.arrow-logo path{
+.arrow-logo-a {
   fill: var(--light-secondary-color)
+  /* fill: var(--light-tertiary-color) */
 }
 
 .arrow-logo:hover {

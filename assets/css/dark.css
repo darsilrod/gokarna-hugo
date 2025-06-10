@@ -88,7 +88,7 @@ pre {
 }
 
 .arrow-logo {
-  background-color: var(--dark-secondary-color);
+  fill: var(--dark-secondary-color);
 }
 
 /* TODO: Check if this is needed or not */
