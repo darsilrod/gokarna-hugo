@@ -18,13 +18,13 @@
 {{ if isset .Site.Params "socialicons" }}
 <div class="gk-social-icons">
     <ul class="gk-social-icons-list">
-        {{ range .Site.Params.SocialIcons }}
+        {{- range .Site.Params.SocialIcons -}}
         <li class="gk-social-icon">
             <a href="{{ .url }}" {{ if .rel }}rel="{{ .rel }}"{{ end }} aria-label="Learn more on {{ .name }}">
                 {{ printf "static/svg/icons/%s.svg" .name | readFile | safeHTML }}
             </a>
         </li>
-        {{ end }}
+        {{- end -}}
     </ul>
 </div>
 {{ end }}
@@ -45,13 +45,13 @@
     {{ $posts := where .Site.Pages "Params.type" "post" }}
 
     {{ if eq .Site.Params.ShowPostsOnHomePage "popular" }}
-        {{ range $posts.ByWeight | first (or .Site.Params.NumberPostsOnHomePage 4) }}
+        {{- range $posts.ByWeight | first (or .Site.Params.NumberPostsOnHomePage 4) -}}
             {{- partial "list-posts.html" . -}}
-        {{ end }}
+        {{- end -}}
     {{ else if eq .Site.Params.ShowPostsOnHomePage "recent" }}
-        {{ range $posts.ByDate.Reverse | first (or .Site.Params.NumberPostsOnHomePage 4) }}
+        {{- range $posts.ByDate.Reverse | first (or .Site.Params.NumberPostsOnHomePage 4) -}}
             {{- partial "list-posts.html" . -}}
-        {{ end }}
+        {{- end -}}
     {{ end }}
     </div>
 

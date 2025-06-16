@@ -14,13 +14,13 @@
         </div>
 
         <div class="nav-links">
-            {{ range .Site.Menus.main }}
+            {{- range .Site.Menus.main -}}
             <div class="nav-link">
                 <a href="{{ .URL | absURL }}" aria-label="{{ .Identifier }}" {{ if .Params.NewPage -}}target="_blank" {{- end -}}>
                     {{- .Pre | readFile | safeHTML }} {{ .Name }} {{ .Post | safeHTML -}}
                 </a>
             </div>
-            {{ end }}
+            {{- end -}}
 
             <span class="nav-icons-divider"></span>
             <div class="nav-link dark-theme-toggle">
@@ -40,13 +40,13 @@
 
             <!-- For mobile -->
             <ul class="nav-hamburger-list visibility-hidden">
-                {{ range .Site.Menus.main }}
+                {{- range .Site.Menus.main -}}
                 <li class="nav-item">
                     <a href="{{ .URL | absURL }}" {{ if .Params.NewPage -}} target="_blank"{{- end -}}>
                         {{- .Pre | readFile | safeHTML }} {{ .Name }} {{ .Post | safeHTML -}}
                     </a>
                 </li>
-                {{ end }}
+                {{- end -}}
                 <li class="nav-item dark-theme-toggle">
                     <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
                     <a role="switch">

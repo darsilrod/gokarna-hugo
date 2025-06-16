@@ -38,11 +38,11 @@
 	{{ end }}
 
         <ul class="post-tags">
-          {{ range $tag := $postTags }}
+          {{- range $tag := $postTags -}}
            {{ if not (in $hiddenTags $tag) }}
              <li class="post-tag"><a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">{{ . }}</a></li>
            {{ end }}
-         {{ end }}
+         {{- end -}}
         </ul>
     </div>
 

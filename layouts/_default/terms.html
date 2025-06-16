@@ -6,14 +6,14 @@
         {{ i18n "nothing" }}
     {{else}}
     <ul class="post-tags">
-        {{ range $.Site.Taxonomies.tags.ByCount }}
+        {{- range $.Site.Taxonomies.tags.ByCount -}}
         <li class="post-tag">
             <a href="{{ .Page.RelPermalink }}">
                 <div class="tag-name">{{ .Name }}</div>
                 <div class="tag-posts-count">{{ .Count }}</div>
             </a>
         </li>
-        {{ end }}
+        {{- end -}}
     </ul>
     {{ end }}
 
