@@ -1,4 +1,8 @@
-<div class="post container">
+{{ if .Params.ShowTableOfContents }}
+<div class="post container container-inline">
+{{ else }}
+<div class="post container container-block">
+{{ end }}
     <div class="post-header-section">
         <h1>{{ or (.Params.H1 | markdownify) (.Title | markdownify) }}</h1>
 

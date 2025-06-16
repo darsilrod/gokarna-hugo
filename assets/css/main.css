@@ -69,9 +69,19 @@ main#content > .container {
   max-width: var(--container-width);
 }
 
-.post.container {
+/* .post.container {
   box-sizing: border-box;
   display: inline-block;
+} */
+
+.post.container-inline {
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.post.container-block {
+  box-sizing: border-box;
+  display: block;
 }
 
 .post-toc {

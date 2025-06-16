@@ -24,14 +24,13 @@ const HEADING_TO_TOC_CLASS = {
 function ready() {
     setThemeByUserPref();
 
+    // TODO: move this code to its corresponding page
     if (document.querySelector('main#content > .container') !== null &&
         document.querySelector('main#content > .container').classList.contains('post')) {
         if (document.getElementById('TableOfContents') !== null) {
             fixTocItemsIndent();
             createScrollSpy();
-        } else {
-            document.querySelector('main#content > .container.post').style.display = 'block';
-        }
+        } 
     }
 
     document.getElementById('hamburger-menu-toggle').addEventListener('click', () => {
