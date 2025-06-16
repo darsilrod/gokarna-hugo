@@ -112,6 +112,10 @@ main#content > .container {
   margin-top: 12px;
 }
 
+ul li ul li {
+  padding-left: 1em;
+}
+
 #toc ul li a.level-1 {
   padding-left: 0;
 }

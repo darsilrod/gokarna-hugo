@@ -28,7 +28,6 @@ function ready() {
     if (document.querySelector('main#content > .container') !== null &&
         document.querySelector('main#content > .container').classList.contains('post')) {
         if (document.getElementById('TableOfContents') !== null) {
-            fixTocItemsIndent();
             createScrollSpy();
         } 
     }
@@ -54,13 +53,6 @@ window.addEventListener('scroll', () => {
         toggleHeaderShadow(100);
     }
 });
-
-function fixTocItemsIndent() {
-    document.querySelectorAll('#TableOfContents a').forEach($tocItem => {
-        const itemId = $tocItem.getAttribute('href').substring(1)
-        $tocItem.classList.add(HEADING_TO_TOC_CLASS[document.getElementById(itemId).tagName]);
-    });
-}
 
 function createScrollSpy() {
     var elements = document.querySelectorAll('#toc a');
