@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', ready, false);
 
 // TODO: make it so that moon cannot be seen for a brief moment?
+// TODO: remove feather-icon class
 
 const THEME_PREF_STORAGE_KEY = 'theme-preference';
 const HIDDEN_ELEMENT_CLASS = 'hidden-element'
@@ -13,13 +14,6 @@ const THEME_TO_ICON_TEXT_CLASS = {
     'light': 'Light mode'
 };
 let darkThemeCss = '';
-
-const HEADING_TO_TOC_CLASS = {
-    'H1': 'level-1',
-    'H2': 'level-2',
-    'H3': 'level-3',
-    'H4': 'level-4'
-}
 
 function ready() {
     setThemeByUserPref();
